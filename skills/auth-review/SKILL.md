@@ -1,6 +1,6 @@
 ---
 name: auth-review
-description: 认证授权流程安全审查，检查 Session 管理、JWT 配置、OAuth 实现和权限模型
+description: 认证授权流程审查，检查 Session/JWT/OAuth 实现和权限模型
 source:
   type: original
   repo: skills-repo/security-guardian

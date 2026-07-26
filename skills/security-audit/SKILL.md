@@ -1,6 +1,6 @@
 ---
 name: security-audit
-description: 基于 OWASP Top 10 的代码安全审计，发现 SQL 注入、XSS、SSRF、权限绕过等漏洞
+description: 基于 OWASP Top 10 的代码审计，发现 SQL 注入/XSS/SSRF/权限绕过等漏洞
 source:
   type: original
   repo: skills-repo/security-guardian
