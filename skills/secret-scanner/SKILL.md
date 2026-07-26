@@ -1,56 +1,55 @@
 ---
 name: secret-scanner
-description: 检测代码中泄露的 API Key/Token/证书/密码，防止敏感信息进入仓库
+description: 密钥与凭证扫描：检测泄露的 API Key、Token、密码、敏感配置
 source:
-  type: original
+  type: derived
   repo: skills-repo/security-guardian
   path: skills/secret-scanner/SKILL.md
   version: 1.0.0
   updated: 2026-07-26
+  url: https://skills.sh/ghostsecurity/skills/ghost-scan-secrets
 metadata:
-  category: 密钥检测
+  category: 检测
   platform: 通用
   difficulty: 入门
 ---
 
-# 密钥泄露扫描
+# 密钥与凭证扫描
 
-> 全面扫描代码和 Git 历史中的 API Key、Token、私钥、数据库密码等敏感信息。
+> 扫描代码库中的泄露密钥：API Key、Token、密码、证书、私钥、.env 文件。生成严重性分级和修复指导。
 
 ## 能力
 
-- **高熵检测**：识别高熵字符串（Base64/Hex 编码的密钥）
-- **模式匹配**：覆盖 AWS/GCP/Azure/OpenAI/GitHub Token 等 50+ 常见密钥格式
-- **历史扫描**：检查 Git 提交历史中曾经提交的密钥
-- **误报过滤**：排除测试数据、示例密钥、文档中的占位符
-- **修复指南**：密钥轮换步骤 + `.gitignore` 配置 + pre-commit hook 设置
+- **多类型检测**：AWS/GC/Azure 云密钥、GitHub Token、JWT 密钥、数据库密码
+- **深度扫描**：不仅检查当前文件，还扫描 Git 历史和已删除文件
+- **严重性分级**：按密钥类型和暴露程度分级（严重/高/中/低）
+- **修复指导**：每个发现附带具体修复步骤（轮换、撤销、移除）
+- **持续监控**：可集成到 CI/CD 中阻止新密钥进入仓库
 
 ## 使用方式
 
-在 Claude Code 中使用 `/secret-scanner` 调用。
-
 ```
-/secret-scanner 扫描当前项目是否有泄露的密钥
-/secret-scanner 检查 git 历史中是否曾提交过敏感信息
+/secret-scanner 扫描整个仓库
+/secret-scanner 检查这个 PR 有没有泄露密钥
 ```
 
 ## 工作流
 
-1. 扫描代码文件、配置文件、环境变量模板
-2. 可选：扫描 Git 提交历史
-3. AI 对每个告警判断是真实密钥还是误报
-4. 对真实密钥：给出轮换步骤和清理方案
-5. 建议 pre-commit hook 防止未来泄露
+1. 确定扫描范围（全仓/指定目录/指定文件）
+2. 运行 poltergeist 引擎扫描
+3. 对每个候选密钥分析确认（真阳性 vs 假阳性）
+4. 生成严重性分级和修复建议
+5. 输出扫描报告
 
 ## 适用场景
 
-- 开源前的最后安全检查
-- 新成员加入团队时的仓库审计
-- CI 中的自动密钥扫描
-- 事故后的根因排查
+- 代码推送到公开仓库前的检查
+- CI/CD 流水线中的自动扫描
+- 历史代码中的密钥泄露排查
+- 合规审计中的凭证管理检查
 
 ## 限制
 
-- 自定义格式的密钥可能被漏检
-- 已在远端泄露的密钥轮换后才能消除风险
-- 二进制文件（.p12/.jks）检测能力有限
+- 扫描结果可能有假阳性，需要人工确认
+- 不检测已加密的密钥
+- 不负责密钥轮换的具体执行

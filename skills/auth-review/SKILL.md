@@ -1,75 +1,56 @@
 ---
 name: auth-review
-description: 认证授权流程审查，检查 Session/JWT/OAuth 实现和权限模型
+description: Firebase 认证与授权基础：用户管理、登录流程、安全规则、多因素认证
 source:
-  type: original
+  type: derived
   repo: skills-repo/security-guardian
   path: skills/auth-review/SKILL.md
   version: 1.0.0
   updated: 2026-07-26
+  url: https://skills.sh/firebase/agent-skills/firebase-auth-basics
 metadata:
-  category: 认证审查
+  category: 认证
   platform: Web
-  difficulty: 专家
+  difficulty: 入门
 ---
 
-# 认证授权审查
+# 认证与授权基础
 
-> 审查认证与授权实现，找出 Session/Token 管理、OAuth 流程、权限控制的安全缺陷。
+> 以 Firebase Auth 为参考的认证授权实践：用户管理、登录流程、安全规则、Session 管理。
 
 ## 能力
 
-- **Session 安全**：Cookie 属性检查（HttpOnly/Secure/SameSite）、Session 固定攻击
-- **JWT 审查**：算法混淆、密钥强度、过期策略、刷新逻辑
-- **OAuth/OIDC**：redirect_uri 校验、state 参数、code 交换安全性
-- **权限模型**：RBAC/ABAC 实现审查、越权检查、最小权限原则
-- **多因素认证**：MFA 旁路检测、恢复流程安全性
-- **密码策略**：哈希算法、盐值、重置流程
+- **用户管理**：注册、登录、密码重置、邮箱验证、用户资料
+- **登录方式**：邮箱/密码、Google/Apple/GitHub OAuth、匿名登录、手机号
+- **安全规则**：Firestore Security Rules、基于角色的访问控制（RBAC）
+- **Session 管理**：Token 刷新、自动登录、登出、多设备管理
+- **多因素认证**：MFA 设置、SMS/TOTP 验证
 
 ## 使用方式
 
-在 Claude Code 中使用 `/auth-review` 调用。
-
 ```
-/auth-review 审查登录和注册模块的认证实现
-/auth-review 检查 API 的权限校验是否完备
+/auth-review 为我的应用设计认证流程
+/auth-review 审查这个 Firestore 安全规则是否合理
+/auth-review 添加 Google 登录到现有认证系统
 ```
 
 ## 工作流
 
-1. 指定审查的认证/授权模块
-2. AI 分析 Session/JWT/Token 管理代码
-3. 检查 OWASP 认证类漏洞清单（ASVS V2/V3）
-4. 逐条标注风险和建议修复
-5. 输出 ASVS 对齐的审查报告
-
-## 输出格式
-
-```markdown
-## 认证授权审查报告
-
-| 类别 | 检查项 | 结果 | 风险 |
-|------|--------|------|------|
-| Session | Cookie HttpOnly | ✅ | - |
-| JWT | 签名算法 RS256→HS256 混淆 | ❌ | 严重 |
-| OAuth | state 参数未校验 | ❌ | 高 |
-
-### 修复建议
-
-#### JWT 算法混淆
-**问题**：服务端未固定签名算法，攻击者可切换为 HS256 用公钥签名
-**修复**：在 JWT 验证时显式指定 `algorithms: ['RS256']`
-```
+1. 确认认证需求（登录方式、安全级别、用户量级）
+2. 选择认证提供商组合
+3. 实现注册/登录/密码重置流程
+4. 配置安全规则和数据访问控制
+5. 测试边界情况（Token 过期、网络中断、多设备）
 
 ## 适用场景
 
-- 自建认证系统的安全审查
-- OAuth/OIDC 集成实现验证
-- 权限系统重构前的安全基线
-- 合规检查（ASVS、PCI DSS）
+- 新应用认证系统搭建
+- 已有系统添加第三方登录
+- 安全规则审查
+- Session 管理和安全策略
 
 ## 限制
 
-- 不审查第三方认证服务（Auth0/Clerk）的实现
-- 密码学层面的强度分析（如量子安全）需要专业工具
-- 社交工程/钓鱼攻击不在审查范围内
+- 以 Firebase Auth 为主要参考，非平台无关
+- 不涉及企业级 SSO/SAML
+- 不涉及自建认证服务器

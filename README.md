@@ -18,10 +18,10 @@
 
 | 环节 | 技能 | 描述 | 来源 |
 |------|------|------|------|
-| 🔍 代码审计 | `security-audit` | OWASP Top 10 代码安全审计，发现注入/XSS/SSRF 等漏洞 | 原创 |
-| 🔑 密钥检测 | `secret-scanner` | 检测代码中泄露的 API Key、Token、密码、证书 | 原创 |
-| 📦 依赖扫描 | `dependency-audit` | npm/pip/cargo 依赖漏洞扫描与修复方案 | 原创 |
-| 🔐 认证审查 | `auth-review` | 认证/授权流程审查，Session/JWT/OAuth 安全检查 | 原创 |
+| 🔍 代码审计 | `security-audit` | 代码安全审计：发现可被利用的漏洞，含攻击场景和修复方案 | [衍生](https://skills.sh/cloudflare/security-audit-skill/security-audit) |
+| 🔑 密钥检测 | `secret-scanner` | 密钥与凭证扫描：检测泄露的 API Key、Token、密码 | [衍生](https://skills.sh/ghostsecurity/skills/ghost-scan-secrets) |
+| 📦 依赖扫描 | `dependency-audit` | 加密代码常量时间审计：检测时序侧信道漏洞 | [衍生](https://skills.sh/trailofbits/skills/constant-time-testing) |
+| 🔐 认证审查 | `auth-review` | Firebase 认证与授权：用户管理、登录、安全规则 | [衍生](https://skills.sh/firebase/agent-skills/firebase-auth-basics) |
 
 ## 快速开始
 
