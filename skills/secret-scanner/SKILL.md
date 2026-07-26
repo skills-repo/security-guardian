@@ -1,6 +1,12 @@
 ---
 name: secret-scanner
 description: 检测代码中泄露的 API Key、Token、证书和密码，防止敏感信息进入仓库
+source:
+  type: original
+  repo: skills-repo/security-guardian
+  path: skills/secret-scanner/SKILL.md
+  version: 1.0.0
+  updated: 2026-07-26
 metadata:
   category: 密钥检测
   platform: 通用

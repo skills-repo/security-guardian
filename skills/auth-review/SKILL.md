@@ -1,6 +1,12 @@
 ---
 name: auth-review
 description: 认证授权流程安全审查，检查 Session 管理、JWT 配置、OAuth 实现和权限模型
+source:
+  type: original
+  repo: skills-repo/security-guardian
+  path: skills/auth-review/SKILL.md
+  version: 1.0.0
+  updated: 2026-07-26
 metadata:
   category: 认证审查
   platform: Web

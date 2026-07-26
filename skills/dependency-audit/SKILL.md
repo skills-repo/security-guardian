@@ -1,6 +1,12 @@
 ---
 name: dependency-audit
 description: npm/pip/cargo 等依赖漏洞扫描，识别已知 CVE 并提供修复方案
+source:
+  type: original
+  repo: skills-repo/security-guardian
+  path: skills/dependency-audit/SKILL.md
+  version: 1.0.0
+  updated: 2026-07-26
 metadata:
   category: 依赖扫描
   platform: 通用
