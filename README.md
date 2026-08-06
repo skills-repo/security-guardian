@@ -14,6 +14,29 @@
 - **自动化优先**——能自动检查的绝不让开发者手动排查
 - **可操作输出**——每个发现附带修复建议和代码示例
 
+## 安装
+
+### 方式一：整库安装（推荐）
+
+一次性安装全部 4 个技能：
+
+```bash
+npx skills add skills-repo/security-guardian -g -y
+```
+
+### 方式二：按需安装单个技能
+
+只安装你需要的某一个技能：
+
+```bash
+npx skills add skills-repo/security-guardian@security-audit -g -y
+npx skills add skills-repo/security-guardian@secret-scanner -g -y
+npx skills add skills-repo/security-guardian@dependency-audit -g -y
+npx skills add skills-repo/security-guardian@auth-review -g -y
+```
+
+> 参数说明：`-g` 全局安装，`-y` 跳过确认。按你的 skills 工具习惯选择是否带这两个 flag。
+
 ## 技能清单
 
 | 环节 | 技能 | 描述 | 来源 |
@@ -22,16 +45,6 @@
 | 🔑 密钥检测 | `secret-scanner` | 密钥与凭证扫描：检测泄露的 API Key、Token、密码 | [衍生](https://skills.sh/ghostsecurity/skills/ghost-scan-secrets) |
 | 📦 依赖扫描 | `dependency-audit` | 加密代码常量时间审计：检测时序侧信道漏洞 | [衍生](https://skills.sh/trailofbits/skills/constant-time-testing) |
 | 🔐 认证审查 | `auth-review` | Firebase 认证与授权：用户管理、登录、安全规则 | [衍生](https://skills.sh/firebase/agent-skills/firebase-auth-basics) |
-
-## 快速开始
-
-```bash
-# 安装全部技能
-npx skills add skills-repo/security-guardian@security-audit -g -y
-npx skills add skills-repo/security-guardian@secret-scanner -g -y
-npx skills add skills-repo/security-guardian@dependency-audit -g -y
-npx skills add skills-repo/security-guardian@auth-review -g -y
-```
 
 ## 推荐工作流
 
