@@ -18,7 +18,7 @@
 
 ### 方式一：整库安装（推荐）
 
-一次性安装全部 4 个技能：
+一次性安装全部 5 个技能：
 
 ```bash
 npx skills add skills-repo/security-guardian -g -y
@@ -33,6 +33,7 @@ npx skills add skills-repo/security-guardian@security-audit -g -y
 npx skills add skills-repo/security-guardian@secret-scanner -g -y
 npx skills add skills-repo/security-guardian@dependency-audit -g -y
 npx skills add skills-repo/security-guardian@auth-review -g -y
+npx skills add skills-repo/security-guardian@privacy-compliance -g -y
 ```
 
 > 参数说明：`-g` 全局安装，`-y` 跳过确认。按你的 skills 工具习惯选择是否带这两个 flag。
@@ -45,6 +46,7 @@ npx skills add skills-repo/security-guardian@auth-review -g -y
 | 🔑 密钥检测 | `secret-scanner` | 密钥与凭证扫描：检测泄露的 API Key、Token、密码 | [衍生](https://skills.sh/ghostsecurity/skills/ghost-scan-secrets) |
 | 📦 依赖扫描 | `dependency-audit` | 加密代码常量时间审计：检测时序侧信道漏洞 | [衍生](https://skills.sh/trailofbits/skills/constant-time-testing) |
 | 🔐 认证审查 | `auth-review` | Firebase 认证与授权：用户管理、登录、安全规则 | [衍生](https://skills.sh/firebase/agent-skills/firebase-auth-basics) |
+| 🛡️ 隐私合规 | `privacy-compliance` | 隐私合规与数据保护：GDPR/CCPA/PIPL 适用性、PII 盘点、DPIA、同意与跨境 | [衍生](https://skills.sh/phuryn/pm-skills/privacy-policy) |
 
 ## 推荐工作流
 

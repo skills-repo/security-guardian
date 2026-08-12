@@ -1,10 +1,10 @@
 ---
 name: security-guardian
 description: >-
-  代码安全审计、密钥泄露检测、依赖供应链审计、认证授权审查与 Web 加固的 AI Agent 技能库。
+  代码安全审计、密钥泄露检测、依赖供应链审计、认证授权审查、Web 加固与隐私合规（GDPR/CCPA/PIPL 数据保护）的 AI Agent 技能库。
   帮助开发者在 PR / 开发阶段拦截漏洞：发现可被利用的真实漏洞并给出攻击场景与修复方案。
   内置密钥扫描、CSP/安全头审计、依赖供应链审计三套零依赖脚本。
-  触发词："安全审计、代码审计、漏洞、密钥扫描、secret、依赖审计、供应链、认证授权、JWT、登录安全、安全头、CSP、HSTS、威胁建模、左移安全"。
+  触发词："安全审计、代码审计、漏洞、密钥扫描、secret、依赖审计、供应链、认证授权、JWT、登录安全、安全头、CSP、HSTS、威胁建模、左移安全、隐私合规、GDPR、CCPA、PIPL、数据保护、PII、跨境传输"。
 agent_created: true
 metadata:
   version: 1.0.0
@@ -29,6 +29,7 @@ metadata:
 - 需要审查**认证 / 授权**设计（登录流程、Session vs JWT、RBAC、对象级权限防 IDOR）。
 - 想**加固 Web 层**：配置 CSP / HSTS / CORS / Cookie 属性等安全响应头。
 - 新功能上线前做**威胁建模**（四问法 + STRIDE + 风险评级）。
+- 收集个人信息（邮箱/手机号/位置/生物识别等）前做**隐私合规自查**：判断适用 GDPR/CCPA/PIPL、盘点 PII、确认同意与跨境机制。
 
 ## 能力索引（超级技能路由）
 
@@ -46,6 +47,7 @@ metadata:
 | 密钥与凭证扫描：检测泄露的 API Key、Token、密码 | `skills/secret-scanner/SKILL.md` | 密钥扫描、凭证扫描、secret scan、泄露检测 |
 | 常量时间审计：检测加密代码的时序侧信道漏洞 | `skills/dependency-audit/SKILL.md` | 常量时间、时序侧信道、constant time、加密审计 |
 | 认证授权基础：用户管理、登录流程、安全规则、会话 | `skills/auth-review/SKILL.md` | 认证审查、登录流程、Firebase、安全规则、会话 |
+| 隐私合规与数据保护：GDPR/CCPA/PIPL 适用性、PII 盘点、DPIA、同意与跨境 | `skills/privacy-compliance/SKILL.md` + `references/privacy-compliance-playbook.md` | 隐私合规、GDPR、CCPA、PIPL、数据保护、PII、跨境传输、DPIA、同意 |
 
 > 路由规则：先做**方法论决策**读 `references/`；要落地具体动作直接调 `skills/`；能用脚本确定性完成的（密钥扫描、CSP 审计、依赖审计）优先跑 `scripts/`。
 
