@@ -43,6 +43,7 @@ metadata:
 | 依赖供应链：可达性分级、投毒、lockfile、SBOM | `references/dependency-supply-chain.md` | 依赖、供应链、依赖审计、lockfile、SBOM、typosquat |
 | 认证授权：选型树、JWT 校验、RBAC/ABAC、IDOR 防护 | `references/authn-authz.md` | 认证、授权、登录、JWT、Session、RBAC、权限 |
 | Web 加固：安全头优先级、HSTS 阶梯、CSP 路径、CORS 误区 | `references/web-hardening.md` | 安全头、CSP、HSTS、CORS、加固、headers |
+| 漏洞分诊与响应：定级（四象限+CVSS）、修复 SLA、漏洞记录模板、外部报告处理 | `references/vuln-triage.md` | 漏洞分诊、漏洞定级、CVSS、修复 SLA、漏洞响应、漏洞披露、vuln triage、安全响应 |
 | 代码安全审计：发现可被利用漏洞，含攻击场景与修复 | `skills/security-audit/SKILL.md` | 安全审计、漏洞审计、security audit、代码审查 |
 | 密钥与凭证扫描：检测泄露的 API Key、Token、密码 | `skills/secret-scanner/SKILL.md` | 密钥扫描、凭证扫描、secret scan、泄露检测 |
 | 常量时间审计：检测加密代码的时序侧信道漏洞 | `skills/dependency-audit/SKILL.md` | 常量时间、时序侧信道、constant time、加密审计 |
@@ -58,6 +59,7 @@ metadata:
 - `scripts/secret_scan.py <paths> [--strict] [--json] [--baseline f.json]` — 扫描密钥/令牌泄露（正则 + 香农熵 + 占位符过滤），CI 中可阻断新泄露。
 - `scripts/csp_audit.py --policy "..." | --headers-file f.txt [--report-only] [--strict] [--json]` — 审计 CSP/安全头、CORS、信息泄露头。
 - `scripts/dep_audit.py <path> [--strict] [--json]` — 审计 npm/Python/Go/Action 的依赖供应链（版本固定、typosquat、pin SHA）。
+- `scripts/cvss_score.py --vector "CVSS:3.1/..." [--explain]` — 从 CVSS v3.1 向量串算基础分与严重等级；`--interactive` 逐项提问，适合不熟悉向量语法时（供 `references/vuln-triage.md` 定级使用）。
 
 运行示例：
 
@@ -65,6 +67,7 @@ metadata:
 python3 scripts/secret_scan.py . --strict
 python3 scripts/csp_audit.py --headers-file headers.txt --strict
 python3 scripts/dep_audit.py . --strict
+python3 scripts/cvss_score.py --vector "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
 ```
 
 ## 模板资源
